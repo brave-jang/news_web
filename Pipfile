@@ -7,8 +7,14 @@ name = "pypi"
 django = "*"
 pillow = "*"
 django-bootstrap4 = "*"
+requests = "*"
+beautifulsoup4 = "*"
 
 [dev-packages]
+black = "*"
 
 [requires]
 python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true

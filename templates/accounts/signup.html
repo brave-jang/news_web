@@ -1,0 +1,12 @@
+{% extends 'layout.html' %} {% load bootstrap4 %} {% block title %} 무제 |
+회원가입 {% endblock %} {% block content %}
+<div class="container w-25">
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {% bootstrap_form form %} {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      {{ submit_label|default:"회원가입" }}
+    </button>
+    {% endbuttons %}
+  </form>
+</div>
+{% endblock %}

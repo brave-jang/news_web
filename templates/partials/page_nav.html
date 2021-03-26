@@ -1,0 +1,21 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if post_list.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{post_list.previous_page_number}}"
+        >&laquo;</a
+      >
+    </li>
+    {% endif %} {% for page in page_obj %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{page}}">{{page}}</a>
+    </li>
+    {% endfor %} {% if post_list.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{post_list.next_page_number}}"
+        >&raquo;</a
+      >
+    </li>
+    {% endif %}
+  </ul>
+</nav>
