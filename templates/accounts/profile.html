@@ -1,20 +1,16 @@
-{% extends 'layout.html' %} {% load bootstrap4 %} {% block title %} 무제 |
-프로필 {% endblock %} {% block content %}
+{% extends 'layout.html' %} 
+{% load bootstrap4 %} 
+
+{% block title %} 무제 | 프로필 {% endblock %} 
+
+{% block content %}
 <div class="container d-flex">
   <div class="card mr-5" style="width: 10rem">
     {% if user_obj == request.user %}
-    <a
-      class="btn btn-primary m-3 btn-sm"
-      href="{% url 'accounts:profile_update' %}"
-      role="button"
-      >프로필 수정</a
-    >
+    <a class="btn btn-primary m-3 btn-sm" href="{% url 'accounts:profile_update' %}" role="button">프로필 수정</a>
     {% endif %}
     <div class="d-flex justify-content-center mt-2">
-      <img
-        src="{{user_obj.avatar.url}}"
-        style="height: 90px; width: 100px; background-size: cover"
-      />
+      <img src="{{user_obj.avatar.url}}" style="height: 90px; width: 100px; background-size: cover" />
     </div>
     <p class="text-center">{{user_obj.nickname}}</p>
     {{user_obj.bio}}
