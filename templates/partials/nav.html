@@ -1,10 +1,8 @@
-<div
-  class="fixed-top d-flex justify-content-around flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
->
-  <a href="{% url 'post:home' %}" class="col">
+<div class="fixed-top d-flex justify-content-around flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <a href="{% url 'post:home' %}" class="col" id="no-mobile">
     <h5 class="mr-md-auto font-weight-normal">무제</h5>
   </a>
-  <nav class="col-7 my-md-0 mr-md-3">
+  <nav id="no-mobile" class="col-7 my-md-0 mr-md-3">
     <a class="p-2 mr-2 text-dark" href="{% url 'post:home' %}">전체</a>
     <a class="p-2 mr-2 text-dark" href="{% url 'post:politics' %}">정치</a>
     <a class="p-2 mr-2 text-dark" href="{% url 'post:economy' %}">경제</a>
@@ -12,30 +10,35 @@
     <a class="p-2 mr-2 text-dark" href="{% url 'post:company' %}">기업</a>
     <a class="p-2 mr-2 text-dark" href="{% url 'post:science' %}">과학</a>
     <a class="p-2 mr-2 text-dark" href="{% url 'post:society' %}">사회/문화</a>
-    <a class="p-2 mr-2 text-dark" href="{% url 'post:book_review' %}"
-      >책 리뷰</a
-    >
+    <a class="p-2 mr-2 text-dark" href="{% url 'post:book_review' %}">책 리뷰</a>
   </nav>
+  
   {% if user.is_authenticated %}
-  <nav class="col-3">
-    <a class="btn btn-outline-primary mr-3" href="{% url 'post:write' %}"
-      >글쓰기</a
-    >
-    <a class="btn btn-outline-primary mr-3" href="{{user.get_absolute_url}}"
-      >프로필</a
-    >
-    <a class="btn btn-outline-primary" href="{% url 'accounts:logout' %}"
-      >로그아웃</a
-    >
+  <nav id="no-mobile" class="col-3">
+    <a class="btn btn-outline-primary mr-3" href="{% url 'post:write' %}">글쓰기</a>
+    <a class="btn btn-outline-primary mr-3" href="{{user.get_absolute_url}}">프로필</a>
+    <a class="btn btn-outline-primary" href="{% url 'accounts:logout' %}">로그아웃</a>
   </nav>
   {% else %}
-  <nav class="col-3">
-    <a class="btn btn-outline-primary mr-3" href="{% url 'accounts:login' %}"
-      >로그인</a
-    >
-    <a class="btn btn-outline-primary" href="{% url 'accounts:signup' %}"
-      >회원가입</a
-    >
+  <nav id="no-mobile" class="col-3">
+    <a class="btn btn-outline-primary mr-3" href="{% url 'accounts:login' %}">로그인</a>
+    <a class="btn btn-outline-primary" href="{% url 'accounts:signup' %}">회원가입</a>
   </nav>
   {% endif %}
+
+  <div id="mobile" class="text-left">
+      <a href="{% url 'post:home' %}" style="font-size: 15px;">
+        <h5 class="font-weight-normal">무제</h5>
+      </a>
+      <nav style="font-size: 10px;">
+        <a class="text-dark" href="{% url 'post:home' %}">전체</a>
+        <a class="text-dark" href="{% url 'post:politics' %}">정치</a>
+        <a class="text-dark" href="{% url 'post:economy' %}">경제</a>
+        <a class="text-dark" href="{% url 'post:it' %}">IT</a>
+        <a class="text-dark" href="{% url 'post:company' %}">기업</a>
+        <a class="text-dark" href="{% url 'post:science' %}">과학</a>
+        <a class="text-dark" href="{% url 'post:society' %}">사회/문화</a>
+        <a class="text-dark" href="{% url 'post:book_review' %}">책 리뷰</a>
+      </nav>
+  </div>
 </div>

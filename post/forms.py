@@ -49,3 +49,7 @@ class CreatePostsForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         post = super().save(commit=False)
         return post
+
+
+class SearchForm(forms.Form):
+    search_content = forms.CharField()

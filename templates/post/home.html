@@ -1,7 +1,18 @@
 {% extends 'layout.html' %} 
-{% block title %} 무제 {% endblock %} 
+{% block title %} 
+  무제 
+{% endblock %} 
 {% block content %}
-<div class="container">
+<div class="container" id="no-mobile-article">
+  <div style="display:flex; justify-content: flex-end; margin-bottom: 20px;">
+    <form class="form-inline" method="GET" action="{% url 'post:search' %}">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="" name="search_content"/>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">검색</button>
+    </form>
+  </div>
   <div class="row align-items">
     {% for post in post_list %}
     <div class="card mr-3 mb-3 shadow-lg" style="height: 450px; width: 250px">
@@ -25,7 +36,7 @@
       </p>
       <div class="card-body mt-1 pt-1">
         <h6 class="font-weight-bold" style="height: 50px">{{post.title}}</h6>
-        <p class="card-text" style="height: 100px; overflow: auto">
+        <p class="card-text" style="height: 100%; overflow: auto">
           {{post.content}}
         </p>
         <div class="d-flex flex-column justify-content-end">
@@ -48,5 +59,26 @@
       {% include 'partials/page_nav.html' %}
     </div>
   </div>
+</div>
+
+<div class="container" id="mobile-article">
+  {% for post in post_list %}
+  <div class="card mb-3" style="height: 100px;">
+    <div class="d-flex flex-row">
+      {% if post.image %}
+      <div class="col-4" style="overflow: hidden; padding: 0;">
+        <img src="{{post.image}}" alt="..." style="width: 100%; object-fit: cover;">
+      </div>
+      {% endif %}
+      <div class="col-8" style="padding: 0;">
+        <div class="card-body" style="font-size: 10px; padding: 4px; overflow: hidden;">
+          <h5 class="card-title" style="font-size: 10px; margin-bottom: 8px; overflow: auto;">{{post.title}}</h5>
+          <p class="card-text" style="font-size: 10px; height: 50px; margin-bottom: 8px; overflow: auto;">{{post.content}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}
