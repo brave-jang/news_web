@@ -19,8 +19,12 @@ def title_crawling(url):
     }
     data = requests.get(url, headers=headers)
     soup = BeautifulSoup(data.text, "html.parser")
-    title = soup.find("meta", {"property": "og:title"}).get("content")
-    img = soup.find("meta", {"property": "og:image"}).get("content")
+    if soup.find("meta", {"property": "og:title"}):
+        title = soup.find("meta", {"property": "og:title"}).get("content")
+        img = soup.find("meta", {"property": "og:image"}).get("content")
+    else:
+        title = "제목이 없습니다."
+        img = "이미지를 찾을 수 없습니다."
     return title, img
 
 
@@ -44,11 +48,12 @@ def posts(request):
         end = int(page_number)
     elif page_number == end_page:
         start = (int(int(page_number) / count) * count) + 1
-        end = end_page
+        end = int(end_page)
     else:
         start = int(int(page_number) / count) * count
         end = (math.ceil(int(page_number) / count) * count) - 1
 
+    print(type(start), type(end))
     page_obj = paginator.page_range[start:end]
     return render(
         request, "post/home.html", {"post_list": post_list, "page_obj": page_obj}
@@ -176,3 +181,6 @@ class SearchView(View):
 
         return render(request, "post/search.html", {"form":form})
     
+
+def error(request):
+    return render(request, "post/error.html")

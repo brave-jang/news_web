@@ -1,4 +1,7 @@
-{% extends 'layout.html' %} {% load bootstrap4 %} {% block content %}
+{% extends 'layout.html' %} 
+{% load bootstrap4 %} 
+
+{% block content %}
 <div class="container">
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %} {% bootstrap_form forms %} {% buttons %}

@@ -25,7 +25,7 @@
         #mobile {
           display: none;
         }
-        #no-mobile-article {
+        #mobile-article {
           display: none;
         }
       }
@@ -33,13 +33,13 @@
   </head>
 
   <body>
+    <div>
     {% include 'partials/nav.html' %}
-    <div style="margin-top: 90px">
-      {% block content %} 
-      {% endblock %}
-    </div>
+    {% block content %} 
+    {% endblock %}
     <footer class="pt-4 my-md-5 pt-md-5 border-top d-flex justify-content-center">
       &copy; 2021, 무제
     </footer>
+  </div>
   </body>
 </html>

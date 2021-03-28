@@ -43,6 +43,7 @@ class CreatePostsForm(forms.ModelForm):
             "category": "카테고리",
         }
         help_texts = {
+            "post_url": "'뉴스'링크만 입력해주세요.",
             "content": "기사내용을 요약해주세요.",
         }
 
